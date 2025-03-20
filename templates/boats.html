@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="body">
+    <h1>Data Base</h1>
+    <div id="data-base">
+        {% for boat in boats %}
+            <ul style="list-style: none;">
+                <ul>ID: <strong>{{boat[0]}}</strong>
+                    <ul>NAME: <strong>{{boat[1]}}</strong></ul>
+                    <ul>BOAT: <strong>{{boat[2]}}</strong></ul>
+                    <ul>OWNER ID: <strong>{{boat[3]}}</strong></ul>
+                    <ul>PRICE: <strong>${{boat[4]}}</strong></ul>
+                </ul>
+            </ul>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+<style>
+    .body{
+        margin: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .input_field {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .input_search {
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .input_search:hover {
+      background-color: #45a049;
+    }
+
+    .search-results{
+        width: 20%;
+        height: 40vh;
+        background-color: #ebf1ec;
+        overflow-y: scroll;
+        border-radius: 20px;
+    }
+</style>
+
+{% extends "base.html" %}
+{% block body %}
+    <div class="body">
+        <form action="/searchboat" method="POST">
+            <h1>Search by ID</h1>
+            <input type="number" name="id" placeholder="ID" class="input_field" required> <br>
+            <input type="submit" value="Search" class="input_search">
+        </form>
+
+        <div class="search-results">
+            {% for boat in boats %}
+                <ul style="list-style: none;">
+                    <ul>ID: <strong>{{boat[0]}}</strong>
+                        <ul>NAME: <strong>{{boat[1]}}</strong></ul>
+                        <ul>BOAT: <strong>{{boat[2]}}</strong></ul>
+                        <ul>OWNER ID: <strong>{{boat[3]}}</strong></ul>
+                        <ul>PRICE: <strong>${{boat[4]}}</strong></ul>
+                    </ul>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
